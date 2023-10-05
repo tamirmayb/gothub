@@ -1,12 +1,14 @@
 # Redcare Pharmacy Software Engineering, Java: Practical Task
-## Author: Tamir Myblat (tamirmayb@gmail.com)
+
+---
+### _**Gothub**_ platform is similar to Github, it manages repositories and ratings
+
+### Author: Tamir Myblat ( tamirmayb@gmail.com )
 
 ### The services use Java 17 Spring Boot 2.7.5, Open API 3, Maven 3 and h2 as local db
 
-
+---
 # Build guide
-
-## Maven
 
 ### Testing
 First check that you are able to compile and pass the tests:
@@ -14,7 +16,7 @@ First check that you are able to compile and pass the tests:
 mvn clean test
 ```
 
-### Start
+### Application Start
 
 To run the backend API locally:
 
@@ -26,7 +28,7 @@ Otherwise, you can build a jar here:
 
 ```
 mvn clean install 
-java -jar target/spring-boot-junit5-1.0-SNAPSHOT.jar
+java -jar target/gothub-1.0-SNAPSHOT.jar
 ```
 
 # Server check
