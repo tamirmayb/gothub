@@ -4,6 +4,7 @@ import com.gothub.dto.RepositoryDto;
 import com.gothub.exception.CustomDateTimeParseException;
 import com.gothub.model.Repository;
 import com.gothub.repository.ReposRepository;
+import com.gothub.utils.Utils;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,6 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class RepositoriesService {
-    private final static int MAX_STARS_SCALE = 5;
     private final static int DEFAULT_FETCH_LIMIT = 10;
     private final static String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -64,11 +64,6 @@ public class RepositoriesService {
     }
 
     public int calculateRating(Long repositoryAccessed, Long maxOfAccessed) {
-
-        double normalizedValue = (double) repositoryAccessed / maxOfAccessed; // Normalize the value between 0 and 1
-        int starRating = (int) Math.ceil(normalizedValue * MAX_STARS_SCALE); // Convert to a star rating
-
-        // Ensure the rating is within bounds (1 to maxStars)
-        return Math.min(MAX_STARS_SCALE, Math.max(1, starRating));
+        return Utils.calculateRating(repositoryAccessed, maxOfAccessed);
     }
 }

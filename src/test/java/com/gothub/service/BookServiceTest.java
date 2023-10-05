@@ -117,4 +117,16 @@ public class BookServiceTest {
         assertEquals(3, repositories.size());
     }
 
+    @Test
+    @DisplayName("when calculateRating called, calculate rating for each repository correctly ")
+    void whenCalculateRating_CorrectRatingCalculated() {
+        long maxAccess = 500;
+
+        assertEquals(1, repositoriesService.calculateRating(100L, maxAccess));
+        assertEquals(2, repositoriesService.calculateRating(200L, maxAccess));
+        assertEquals(3, repositoriesService.calculateRating(300L, maxAccess));
+        assertEquals(4, repositoriesService.calculateRating(400L, maxAccess));
+        assertEquals(5, repositoriesService.calculateRating(500L, maxAccess));
+    }
+
 }
