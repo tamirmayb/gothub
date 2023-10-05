@@ -11,7 +11,12 @@
 # Build guide
 
 ### Testing
-First check that you are able to compile and pass the tests:
+Before starting for the first time please run:
+```
+mvn clean install
+```
+
+Then, you can check that you are able to compile and pass the tests:
 ```
 mvn clean test
 ```
@@ -31,7 +36,7 @@ mvn clean install
 java -jar target/gothub-1.0-SNAPSHOT.jar
 ```
 
-# Server check
+## Server check
 
 To access to the H2 database in dev mode:
 
