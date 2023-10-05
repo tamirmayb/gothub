@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,7 +29,8 @@ public class RepositoryDto {
     private Long accessed;
 
     @NotNull(message = "Repository creation date is mandatory")
-    private LocalDate createdAt;
+    @DateTimeFormat
+    private LocalDateTime createdAt;
 
     private int rating;
 

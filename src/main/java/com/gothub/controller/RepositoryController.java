@@ -10,10 +10,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @RequestMapping("/api/search")
@@ -23,9 +25,9 @@ public class RepositoryController {
 
     private final RepositoriesService repositoriesService;
 
-    @Operation(summary = "Gets the list of repositories with optional filters")
+    @Operation(summary = "Gets a list of repositories with optional filters")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the repository",
+            @ApiResponse(responseCode = "200", description = "Found repositories",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = List.class))
             }),
@@ -34,13 +36,13 @@ public class RepositoryController {
             })
     @GetMapping(path = "/repositories", produces = {"application/json"})
     public ResponseEntity<List<RepositoryDto>> list(
-            @RequestParam(required = false, name = "limit") Optional<Long> limit,
+            @RequestParam(required = false, name = "limit") Long limit,
             @RequestParam(required = false, name = "from") String from,
             @RequestParam(required = false, name = "lang") String lang) {
 
         log.info("GET /repositories triggered");
 
-        return ResponseEntity.ok(repositoriesService.getRepositories(limit.orElse(10L), from, lang));
+        return ResponseEntity.ok(repositoriesService.getRepositories(limit, from, lang));
     }
 
 }

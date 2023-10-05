@@ -20,17 +20,45 @@ import static org.mockito.Mockito.when;
 @TestInstance(PER_CLASS)
 @ActiveProfiles("test")
 @Tag("UnitTest")
-@DisplayName("Book Service Unit Tests")
-public class BookServiceTest {
+@DisplayName("Repository Service Unit Tests")
+public class RepositoryServiceTest {
 
     private ReposRepository reposRepositoryMock;
     private RepositoriesService repositoriesService;
 
-    Repository rep1 = Repository.builder().id(1L).name("example").languageUsed("Java").createdAt(LocalDate.parse("2019-10-10")).accessed(10L).build();
-    Repository rep2 = Repository.builder().id(2L).name("example2").languageUsed("Java").createdAt(LocalDate.parse("2017-10-10")).accessed(20L).build();
-    Repository rep3 = Repository.builder().id(3L).name("example3").languageUsed("Java").createdAt(LocalDate.parse("2017-10-10")).accessed(30L).build();
-    Repository rep4 = Repository.builder().id(4L).name("example4").languageUsed("GO").createdAt(LocalDate.parse("2018-10-10")).accessed(50L).build();
-    Repository rep5 = Repository.builder().id(5L).name("example5").languageUsed("TS").createdAt(LocalDate.parse("2018-10-10")).accessed(20L).build();
+    Repository rep1 = Repository.of(1L,
+            "example", "",
+            "Java",
+            LocalDate.parse("2019-10-10").atStartOfDay(),
+            10L);
+
+    Repository rep2 = Repository.of(2L,
+            "example2",
+            "",
+            "Java",
+            LocalDate.parse("2017-10-10").atStartOfDay(),
+            20L);
+
+    Repository rep3 = Repository.of(3L,
+            "example3",
+            "",
+            "Java",
+            LocalDate.parse("2017-10-10").atStartOfDay(),
+            30L);
+
+    Repository rep4 = Repository.of(4L,
+            "example4",
+            "",
+            "Go",
+            LocalDate.parse("2018-10-10").atStartOfDay(),
+            50L);
+
+    Repository rep5 = Repository.of(5L,
+            "example5",
+            "",
+            "TS",
+            LocalDate.parse("2018-10-10").atStartOfDay(),
+            20L);
 
     List<Repository> allRepos = Arrays.asList(rep1, rep2, rep3, rep4, rep5);
 
@@ -44,7 +72,7 @@ public class BookServiceTest {
 
     @Test
     @DisplayName("when list Repository, then Repositories are retrieved and ordered by rates")
-    void whenGetRepositories_ThenBooksRetrievedAndOrderedByRates() {
+    void whenGetRepositories_ThenRepositoriesRetrievedAndOrderedByRates() {
 
         //given
         when(reposRepositoryMock.findAll()).thenReturn(allRepos);
@@ -59,7 +87,7 @@ public class BookServiceTest {
 
         // check results are ordered according to rates
         assertEquals(rep4.getId(), repositories.get(0).getId());
-        assertEquals(3, repositories.size());
+        assertEquals(5, repositories.size());
     }
 
     @Test

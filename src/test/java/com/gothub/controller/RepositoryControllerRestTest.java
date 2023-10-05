@@ -19,7 +19,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = GothubApplication.class)
 @ActiveProfiles("test")
-@DisplayName("Book Resource REST API Tests")
+@DisplayName("Repository Controller REST API Tests")
 @Tag("IntegrationTest")
 public class RepositoryControllerRestTest {
 

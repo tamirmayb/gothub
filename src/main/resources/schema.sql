@@ -7,6 +7,6 @@ create table repositories
     description           varchar(500),
     language_used         varchar(50) not null,
     accessed              bigint(20),
-    created_at            date,
+    created_at            timestamp,
     primary key (id)
 );

@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 
 import static org.mockito.BDDMockito.given;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Tag("IntegrationTest")
-@DisplayName("Book Resource Integration Tests")
+@DisplayName("Repository Controller Integration Tests")
 public class RepositoryControllerTest {
 
     @Autowired
@@ -47,7 +47,7 @@ public class RepositoryControllerTest {
 
         //when-then
         this.mockMvc.perform(get("/api/search/repositories?limit=100&from=2007-01-11&lang=Java")
-                .accept(APPLICATION_JSON_UTF8))
+                .accept(APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 

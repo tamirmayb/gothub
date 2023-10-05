@@ -3,7 +3,7 @@ package com.gothub.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -34,6 +34,16 @@ public class Repository {
     private Long accessed;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
+    public static Repository of(Long id, String name, String description, String languageUsed, LocalDateTime createdAt, Long accessed) {
+        return Repository.builder()
+                .id(id)
+                .name(name)
+                .description(description)
+                .languageUsed(languageUsed)
+                .createdAt(createdAt)
+                .accessed(accessed)
+                .build();
+    }
 }

@@ -23,22 +23,22 @@ public class RepositoryDtoTest {
     public void whenConvertRepositoryEntityToRepositoryDto_thenCorrect() {
 
         //given
-        Repository book = Repository.builder()
+        Repository repository = Repository.builder()
                 .id(1L)
                 .name("Example")
                 .languageUsed("Java")
                 .accessed(5L)
-                .createdAt(LocalDate.parse("2017-01-01"))
+                .createdAt(LocalDate.parse("2017-01-01").atStartOfDay())
                 .build();
 
         //when
-        RepositoryDto repositoryDto = modelMapper.map(book, RepositoryDto.class);
+        RepositoryDto repositoryDto = modelMapper.map(repository, RepositoryDto.class);
 
         //then
-        assertEquals(book.getId(), repositoryDto.getId());
-        assertEquals(book.getName(), repositoryDto.getName());
-        assertEquals(book.getCreatedAt(), repositoryDto.getCreatedAt());
-        assertEquals(book.getAccessed(), repositoryDto.getAccessed());
+        assertEquals(repository.getId(), repositoryDto.getId());
+        assertEquals(repository.getName(), repositoryDto.getName());
+        assertEquals(repository.getCreatedAt(), repositoryDto.getCreatedAt());
+        assertEquals(repository.getAccessed(), repositoryDto.getAccessed());
     }
 
 }
