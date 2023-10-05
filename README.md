@@ -45,6 +45,8 @@ http://localhost:8080/swagger-ui.html
 
 ## Fetching Repositories
 * The H2 db should already have a few default repositories.
+* I Assume that this service does not create or changes repositories, it's only purpose is to fetch repositories as described on the task details. 
+  * You can change / add repositories directly to the db as needed.
 * Run http://localhost:8080/api/search/repositories to fetch without any searchable parameters.
 * Run http://localhost:8080/api/search/repositories?limit=100&from=2000-01-01&lang=Java
   * This will fetch repositories filtered by search params ```limit, from, lang```
