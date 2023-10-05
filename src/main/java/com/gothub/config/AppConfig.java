@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = { "example" })
+@ComponentScan(basePackages = { "com.gothub" })
 public class AppConfig {
 
     @Bean

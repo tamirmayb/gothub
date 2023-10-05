@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 public class RepositoryServiceTest {
 
     private ReposRepository reposRepositoryMock;
-    private RepositoriesService repositoriesService;
+    private IRepositoriesService repositoriesService;
 
     Repository rep1 = Repository.of(1L,
             "example", "",
